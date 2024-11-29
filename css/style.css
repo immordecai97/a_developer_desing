@@ -1,0 +1,528 @@
+/* -----------------------------------------GENERALES */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* -----------------------------------------BODY */
+body{
+    display: grid;
+    grid-template-areas: 
+      'header'
+      'main'
+      'footer';
+    grid-template-rows: 4rem auto 100px;
+    min-height: 100vh;
+    background-color: rgba(223, 223, 223);
+}
+/* -----------------------------------------HEADER */
+header{
+    grid-area: header;
+    grid-column: 4rem;
+    width: auto;
+}
+/* -----------------------------------------NAV */
+#navBar {
+    color: black;
+    width: 100%;
+    height: 4rem;
+    background-color: rgb(241, 241, 241);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    place-items: center;
+}
+/* -----------------------------------------LOGO */
+#logo{
+    width: 10rem;
+    overflow: hidden;
+    text-indent: -9999px;
+    background-image: url(../assets/logo_a_developers_design.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: 0;
+}
+/* -----------------------------------------CONTENEDOR DE BOTONES DEL NAV BAR */
+.contenedorBtnsNav {
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+/* -----------------------------------------CONTENEDOR DE CATEGORIAS */
+.contenedorCategorias{
+    cursor: pointer;
+    display: none;
+}
+.contenedorCategorias p{
+    transition: ease 300ms;
+}
+.contenedorCategorias p:hover{
+    background: linear-gradient(59deg, rgba(121, 9, 15, 0.85) 0%, rgba(121, 9, 74, 0.85) 35%, rgba(247, 0, 255, 0.85) 100%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    transform: translateY(-10px) scale(1.2);
+}
+.mostrando {
+    display: flex;
+    width: 100%;
+    transition: ease 1s;
+    align-items: center;
+    gap: 1rem;
+}
+/* -----------------------------------------DIV FILTROS */
+.divFiltros{
+    display: flex;
+    gap: 1rem;
+}
+/* -----------------------------------------DIV CARRITO */
+.divCarrito{
+    position: relative;
+    transition: ease 300ms;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+/* -----------------------------------------ITEMS HEADER */
+#itemHeader {
+    width: 1.1rem;
+    height: 1.1rem;
+    font-size: .7rem;
+    background-color: rgb(247, 118, 12);
+    border-radius: 100%;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    text-align: center;
+}
+/* -----------------------------------------ICONO FILTER TAMAÑO */
+/* -----------------------------------------ICONO CARRITO TAMAÑO */
+i{
+    font-size: 1.4rem;
+}
+/* -----------------------------------------MAIN */
+#contenido{
+    grid-area: main;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+}
+/* -----------------------------------------CAROUSEL */
+.carousel-inner,
+#carouselProductos {
+    border-radius: .5rem;
+    height: 34rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+/* -----------------------------------------CATALOGO */
+#catalogo{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    place-items: center;
+}
+/* -----------------------------------------PASTILLAS PRODUCTOS */
+#catalogo div {
+    color: black;
+    background-color: rgba(223, 223, 223);
+    max-width: 16.5rem;
+    min-width: 16.5rem;
+    border-radius: .5rem;
+    padding: 0 0 .5rem 0;
+    box-shadow: 3px 4px 8px rgb(49, 49, 49);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .25rem;
+    transition: ease 300ms;
+    overflow: hidden;
+    position: relative;
+}
+#catalogo div::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: circle(0.0% at 0 100%);
+    z-index: -1;
+    transition: ease 600ms;
+}
+#catalogo div:hover::before {
+    background: linear-gradient(59deg, rgba(55,9,121,.85) 0%, rgba(34,9,121,.85) 35%, rgba(0,3,255,.85) 100%);
+    clip-path: circle(141.4% at 0 100%);
+}
+
+#catalogo div figure {
+    border-radius: .5rem;
+}
+#catalogo div figure img {
+    border-radius: .5rem;
+    transition: ease 300ms;
+}
+#catalogo div:hover {
+    transform: translateY(-6px);
+    box-shadow: 6px 6px 10px rgba(49, 49, 49, 0.6);
+    color: white;
+}
+#catalogo div:hover > figure img {
+    transform: scale(1.2);
+}
+/* -----------------------------------------MODAL FONDO */
+/* -----------------------------------------MODAL FONDO GRACIAS*/
+.modalFondoGracias,
+.modalFondo{
+    color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* -----------------------------------------MODAL GRACIAS */
+/* -----------------------------------------MODAL INFO */
+
+.modalGracias,
+.modalCarrito {
+    width: 70%;
+    height: auto;
+    background-color: rgb(241, 241, 241);
+    border-radius: .5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.modalInfo{
+    width: 70%;
+    height: auto;
+    background-color: rgb(241, 241, 241);
+    border-radius: .5rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
+}
+.modalInfo p{
+    font-size: 1.1rem;
+}
+.modalGracias{
+    gap: .2rem;
+}
+/* -----------------------------------------MODAL GRACIAS */
+.modalGracias p{
+    justify-content: center;
+
+}
+/* -----------------------------------------MODAL HEADER */
+/* -----------------------------------------MODAL BOTONES */
+.contenedorDeBtns,
+.modalHeaderCarrito{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    place-items: center;
+}
+/* -----------------------------------------TABLA PRODUCTOS */
+table {
+    color: black;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: white;
+}
+th {
+    border: 1px solid rgb(0,0,0,.6);
+    background-color: rgb(242, 242, 242);
+    padding: 8px;
+    border: 1px solid rgb(221, 221, 221);
+}
+td {
+padding: 8px;
+border: 1px solid rgb(221, 221, 221);
+}
+tfoot tr td{
+background-color: rgb(18, 18, 19);
+color: rgb(221, 221, 221);
+font-weight: bold;
+}
+/* -----------------------------------------INCREMENTAR */
+/* -----------------------------------------DECREMENTAR */
+.eliminar,
+.incrementar,
+.decrementar{
+    transition: ease 600ms;
+    cursor: pointer;
+}
+.incrementar{
+    background: linear-gradient(59deg, rgba(44, 121, 9, 0.85) 0%, rgba(54, 121, 9, 0.85) 35%, rgba(72, 255, 0, 0.85) 100%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+}
+
+.decrementar{
+    background: linear-gradient(59deg, rgba(121, 9, 15, 0.85) 0%, rgba(121, 9, 74, 0.85) 35%, rgba(247, 0, 255, 0.85) 100%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+}
+.eliminar{
+    background: linear-gradient(59deg, rgba(87, 1, 5, 0.85) 0%, rgba(121, 9, 9, 0.85) 35%, rgba(255, 0, 0, 0.85) 100%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+}
+.eliminar:hover,
+.incrementar:hover,
+.decrementar:hover{
+    transform: translateY(-5px) rotate(360deg);
+}
+
+
+/* -----------------------------------------BOTONES */
+button{
+	background-color: rgb(18, 18, 19);
+	color: rgb(255, 255, 255);
+	font-size: .7rem;
+	font-weight: bold;
+	border-radius: .5rem;
+	padding: .5rem .5rem;
+	text-transform: uppercase;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+	outline: none;
+	border: none;
+	transition: ease 300ms;
+}
+
+#comprar:hover,
+#vaciar:hover,
+#volver:hover,
+#pagar:hover,
+#cancelar:hover,
+.info:hover,
+.agregarAlCarrito:hover{
+    background: linear-gradient(59deg, rgba(121, 9, 15, 0.85) 0%, rgba(121, 9, 74, 0.85) 35%, rgba(247, 0, 255, 0.85) 100%);
+    outline: solid 1px rgb(255, 255, 255);
+}
+#btnVerFiltros,
+#verCarrito{
+    cursor: pointer;
+    transition: 600ms ease;
+}
+#btnVerFiltros:hover,
+#verCarrito:hover{
+    background: linear-gradient(59deg, rgba(121, 9, 15, 0.85) 0%, rgba(121, 9, 74, 0.85) 35%, rgba(247, 0, 255, 0.85) 100%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    transform: rotate(-20deg) scale(1.2);
+}
+.carousel-control-prev,
+.carousel-control-next{
+	background-color: transparent;
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.carousel-control-prev:hover,
+.carousel-control-next:hover{
+	/* background-color: ; */
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	outline: none;
+}
+/* -----------------------------------------CHECKOUT */
+#checkOut{
+	display: grid;
+	grid-template-columns: 40% auto;
+	place-items: center;
+    gap: 1rem;
+}
+/* -----------------------------------------FORM */
+form{
+    color: black;
+    width: 20rem;
+	/* background-color: rgba(223, 223, 223); */
+    background-color: rgb(242, 242, 242);
+	box-shadow: 3px 4px 8px rgb(49, 49, 49);
+	border-radius: .5rem;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	align-items: center;
+}
+/* -----------------------------------------INPUTS, SELECT DIVS */
+select,
+input[type="text"],
+input[type="email"],
+input[type="date"],
+form div{
+    width: 100%;
+}
+select,
+input[type="text"],
+input[type="email"],
+input[type="date"]{
+    border: transparent;
+    height: 2rem;
+    border-radius: .5rem;
+    padding: .25rem;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus{
+    outline: 1px solid rgb(211, 163, 75);
+    outline-color: rgb(211, 163, 75);
+}
+.cumple{
+    color: rgb(17, 177, 2);
+    outline: 1px solid rgb(17, 177, 2);
+}
+.noCumple{
+    color: rgb(177, 2, 2);
+    outline: 1px solid rgb(177, 2, 2);
+}
+/* -----------------------------------------LABELS */
+label{
+    margin-left: .4rem;
+}
+/* -----------------------------------------FORMA DE PAGO */
+.divPagos{
+    display: flex;
+}
+/* -----------------------------------------EFECTIVO */
+form p{
+    text-align: center;
+}
+/* -----------------------------------------DIVBTNS */
+.divBtns{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+/* -----------------------------------------FIGURE */
+figure{
+    max-width: 16.5rem;
+    height: 11rem;
+    overflow: hidden;
+}
+/* -----------------------------------------IMG */
+img{
+    width: 100%;
+}
+/* -----------------------------------------PARRAFOS */
+p{
+    margin: 0;
+}
+/* -----------------------------------------H3 H2 */
+h2{
+    font-size: 2.8rem;
+}
+h2,
+h3{
+    margin: 1rem auto;
+    text-align: center;
+}
+/* -----------------------------------------WARNING */
+.rojoVacio{
+    color: rgb(216, 43, 100);
+}
+/* -----------------------------------------DIV PUBLICIDAD */
+.divPublicidad{
+    position: fixed;
+    top: 4.2rem;
+    right: 0;
+	background: linear-gradient(59deg, rgba(121, 9, 15, 0.85) 0%, rgba(121, 9, 74, 0.85) 35%, rgba(247, 0, 255, 0.85) 100%);
+    color: white;
+    padding: 1rem;
+    border-radius: .5rem 0 0 .5rem;
+    height: 4rem;
+    width: 20rem;
+    z-index: 999;
+}
+/* -----------------------------------------WARNINGS */
+.warning{
+    display: none;
+}
+.warningOcultoTarj,
+.warningOcultoDirec,
+.warningOcultoMail,
+.warningOcultoTLF,
+.warningOcultoNomb{
+    display: none;
+}
+.activee,
+.warningActivo{
+    display: block;
+    font-size: .8rem;
+    background: linear-gradient(59deg, rgba(121, 9, 15, 0.85) 0%, rgba(121, 9, 74, 0.85) 35%, rgba(247, 0, 255, 0.85) 100%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    padding: .5rem;
+}
+/* -----------------------------------------FOOTER */
+footer{
+	background-color: rgb(18, 18, 19);
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+footer ul{
+    margin: 0;
+    width: 50%;
+    padding-left: 0;
+    list-style: none;
+	display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+footer ul li{
+    transition: ease 300ms;
+}
+footer ul li a{
+    text-decoration: none;
+    color: white;
+}
+footer ul li:hover{
+    transform: scale(1.4);
+}
+/* -----------------------------------------MEDIAQUERIES */
+@media screen and (min-width: 576px) {
+    #catalogo{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 2rem;
+    }
+}
+@media screen and (min-width: 992px) {
+    #catalogo{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 2rem;
+    }
+}
